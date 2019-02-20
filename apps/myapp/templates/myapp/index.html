@@ -4,23 +4,32 @@
         <meta charset="utf-8">
         <title>Welcome Page</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}"> 
+        <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
     </head>
     <body>
-        <h1>Hello World!!!</h1>
-        <p>{{myname}}</p>
+        <!-- <h1>Hello World!!!</h1> -->
+        <!-- <p>{{myname}}</p>
         <p>{{x}}</p>
-        <p>{{request.session.email}}</p>
+        <p>{{request.session.email}}</p> -->
 
+        <h2>Register</h2>
         <form class="" action="/process" method="post">
             {% csrf_token %}
             <input type="text" name="fname" placeholder="First Name"><br>
             <input type="text" name="lname" placeholder="Last Name"><br>
             <input type="submit" name="" value="Register">
-        </form>
+        </form><br>
 
+        {% if messages %}
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+        {% endif %}
+
+        <br>
         <!-- <p>{{students}}</p> -->
 
+        <h2>All Students</h2>
         {% for student in students %}
             <p>{{student.fname}} {{student.lname}}</p>
 
