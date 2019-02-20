@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome Page</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}"> 
+    </head>
+    <body>
+        <h1>Hello World!!!</h1>
+        <p>{{myname}}</p>
+        <p>{{x}}</p>
+        <p>{{request.session.email}}</p>
+
+        <form class="" action="/process" method="post">
+            {% csrf_token %}
+            <input type="text" name="fname" placeholder="First Name"><br>
+            <input type="text" name="lname" placeholder="Last Name"><br>
+            <input type="submit" name="" value="Register">
+        </form>
+
+        <!-- <p>{{students}}</p> -->
+
+        {% for student in students %}
+            <p>{{student.fname}} {{student.lname}}</p>
+
+        {% endfor %}
+    </body>
+</html>
